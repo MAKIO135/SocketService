@@ -33,19 +33,18 @@
 } )</code></pre>
 
     <p>
-        The API for the socket is based on socket.io exposing an <span class="code">on</span> and an <span class="code">emit</span> method: <br>
-        - the <span class="code">emit</span> method lets you emit an event with the name your choice + data as an object<br>
-        - the <span class="code">on</span> method lets you handle your events
+        The API for the socket is based on socket.io exposing an <span class="code">on</span> and an <span class="code">emit</span> method:<br>
+        - the <span class="code">emit</span> method lets you emit an event with the name your choice and an object for passing data<br>
+        - the <span class="code">on</span> method lets you handle your events and how all sockets in the room should use data
+    </p>
 
 <pre><code>SocketService.init( 'my-room', socket => {
-    socket.on( 'test', data => console.log( data ) )
-    socket.on( 'test2', data => console.log( data ) )
+    socket.on( 'my-test', data => console.log( data ) )
 
     socket.on( 'room-joined', room => {
         console.log( `socket joined ${ room }` )
 
-        socket.emit( 'test', { msg: 'hello test1' } )
-        socket.emit( 'test2', { msg: 'hello test2' } )
+        socket.emit( 'my-test', { msg: 'hello test1' } )
     } )
 } )</code></pre>
 
