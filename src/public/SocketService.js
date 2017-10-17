@@ -6,11 +6,9 @@ class SocketService {
         this.connected = false
         this.socket = io()
         this.socket.on( 'connected', () =>  {
-            console.log( 'socket connected!' )
             this.connected = true
             this.socket.emit( 'join-room', room )
         } )
-        this.socket.on( 'room-joined', room => console.log( `socket joined ${ room }` ) )
     }
 
     emit( event, data ) {
