@@ -1,11 +1,15 @@
 'use strict';
 
-class Socket{
+class SocketService{
     constructor( room ) {
         this.room = room
+        this.connected = false
         this.socket = io()
-        this.socket.on( 'connected', () => console.log( 'socket connected!' ) )
-        this.socket.emit( 'join-room', room )
+        this.socket.on( 'connected', () =>  {
+            console.log( 'socket connected!' )
+            this.connected = true
+            this.socket.emit( 'join-room', room )
+        } )
         this.socket.on( 'room-joined', room => console.log( `socket joined ${ room }` ) )
     }
 

@@ -5,8 +5,8 @@ const app = express();
 const server = require( 'http' ).Server( app );
 const io = require( 'socket.io' )( server );
 
+// Server
 server.listen( process.env.port || 80 );
-
 app.use( express.static( __dirname + '/public' ) );
 app.get( '/', ( req, res ) => {
     res.sendfile( 'index.html' );
