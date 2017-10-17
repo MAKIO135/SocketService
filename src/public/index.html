@@ -13,7 +13,7 @@
 
         <hr>
 
-        <p>SocketService provides a super small library (<1Kb) to let you connect to our websocket service, join a room for your app and emit your own events to all the sockets in your room.</p>
+        <p>SocketService provides a super small library (&lt;1Kb) that lets you connect to our websocket service, join a room for your app and emit your own events to all the sockets in your room.</p>
 
         <hr>
 
@@ -24,18 +24,18 @@
 
         <p>
             The SocketService library exposes a single global object <span class="code">SocketService</span> with a method to initialize it, accepting 2 parameters:<br>
-            - the name of the room you want to join/create (String)<br>
-            - a callback function with a socket a parameter
+            - the name of the room you want to join.<br>
+            - a callback function with a socket a parameter.
         </p>
 
-<pre><code>SocketService.init( 'my-room', socket => {
+<pre><code>SocketService.init( 'my-awesome-room', socket => {
     // do something with your socket
 } )</code></pre>
 
     <p>
-        The API for the socket is based on socket.io exposing an <span class="code">on</span> and an <span class="code">emit</span> method:<br>
-        - the <span class="code">emit</span> method lets you emit an event with the name your choice and an object for passing data<br>
-        - the <span class="code">on</span> method lets you handle your events and how all sockets in the room should use data
+        The API for the socket is based on socket.io, exposing <span class="code">on</span> and <span class="code">emit</span> methods:<br>
+        - the <span class="code">emit</span> method lets you emit an event with the name your choice and an object for passing data. There is only one event that is fired automatically by the server that lets you know the socket joined the room <span class="code">'room-joined'</span>.<br>
+        - the <span class="code">on</span> method lets you handle your events and how all sockets in the room should use data.
     </p>
 
 <pre><code>SocketService.init( 'my-room', socket => {

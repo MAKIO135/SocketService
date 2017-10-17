@@ -12,7 +12,6 @@ app.get( '/', ( req, res ) => {
     res.sendfile( 'index.html' );
 } );
 
-
 // Sockets.io communication
 io.on( 'connection' , socket => {
 	io.emit( 'connected' )
