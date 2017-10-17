@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require( 'express' );
 const app = express();
 const server = require( 'http' ).Server( app );
@@ -12,25 +14,14 @@ app.get( '/', ( req, res ) => {
 
 
 // Sockets.io communication
-const sockets = []
+io.on( 'connection' , socket => {
+	io.emit( 'connected' )
 
-io.on( 'connection' , socket {
-    console.log( socket.id )
-	sockets.push( socket )
-
-	io.emit( 'connected', { nbUsers: sockets.length } )
-
-	socket.on( 'disconnect', () => {
-		sockets = sockets.filter( s => {
-            return s.id !== socket.id
-        } )
-	} )
-
-    socket.on( 'username', username => {
-        socket.username = username
+    socket.on( 'join-room', room => {
+        socket.join( room, () => socket.emit( 'room-joined', room ) )
     } )
 
     socket.on( 'msg', msg => {
-        io.emit( 'newMsg', { username: socket.username, msg } )
+        io.to( msg.room ).emit( msg.event, msg.data )
 	} )
 } )
