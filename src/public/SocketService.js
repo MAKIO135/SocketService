@@ -1,6 +1,6 @@
 'use strict';
 
-class SocketService{
+class SocketService {
     constructor( room ) {
         this.room = room
         this.connected = false
