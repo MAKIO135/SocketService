@@ -26,22 +26,3 @@ gulp.task( 'watch', [ 'server:start' ], () => {
     }
     gulp.watch( [ './src/public/**/*.*', '!./src/public/**/*.scss' ] ).on( 'change', restartClient );
 } );
-
-// gulp.task( 'client', () => {
-//     return browserify( {
-//             entries: './src/js/main.js',
-//             debug: true
-//         } )
-//         .on('error', function( err ){
-//             console.log( err );
-//         } )
-//         .transform( 'babelify', {
-//             presets: [ 'es2015' ]
-//         } )
-//         .transform( envify )
-//         .bundle()
-//         .pipe( source( 'bundle.js' ) )
-//         .pipe( buffer() )
-//         .pipe( gulp.dest( './src/public/dist' ) )
-//         .pipe( livereload() )
-// } )

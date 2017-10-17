@@ -1,14 +1,11 @@
-window.addEventListener( 'load', e => {
-    const s = new SocketService( 'my-room' )
+SocketService.init( 'my-room', socket => {
+    socket.on( 'test', data => console.log( data ) )
+    socket.on( 'test2', data => console.log( data ) )
 
-    s.on( 'room-joined', room => {
+    socket.on( 'room-joined', room => {
         console.log( `socket joined ${ room }` )
 
-        s.emit( 'test', { msg: 'hello SocketService' } )
-
-        s.emit( 'test2', { msg: 'hello SocketService 2' } )
-    } );
-    
-    s.on( 'test', data => console.log( data ) )
-    s.on( 'test2', data => console.log( data ) )
+        socket.emit( 'test', { msg: 'hello test1' } )
+        socket.emit( 'test2', { msg: 'hello test2' } )
+    } )
 } )

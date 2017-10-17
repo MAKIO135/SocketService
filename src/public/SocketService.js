@@ -1,21 +1,27 @@
-'use strict';
+'use strict'
 
-class SocketService {
-    constructor( room ) {
-        this.room = room
-        this.connected = false
-        this.socket = io()
-        this.socket.on( 'connected', () =>  {
-            this.connected = true
-            this.socket.emit( 'join-room', room )
-        } )
+let SocketService = {}
+SocketService.init = ( room, callback ) => {
+    class Socket {
+        constructor( room ) {
+            this.room = room
+            this.socket = io()
+            this.socket.on( 'connected', () => this.socket.emit( 'join-room', this.room ) )
+        }
+
+        emit( event, data ) {
+            this.socket.emit( 'msg', { room: this.room, event, data } )
+        }
+
+        on( event, f ) {
+            this.socket.on( event, f )
+        }
     }
 
-    emit( event, data ) {
-        this.socket.emit( 'msg', { room: this.room, event, data } )
-    }
-
-    on( event, f ) {
-        this.socket.on( event, f )
-    }
+    const ioScript = document.createElement( 'script' )
+    ioScript.src = 'https://socketservice.herokuapp.com/socket.io/socket.io.js'
+    ioScript.addEventListener( 'load', e => {
+        callback( new Socket( room ) )
+    } )
+    document.body.appendChild( ioScript )
 }
