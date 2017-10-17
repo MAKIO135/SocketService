@@ -14,9 +14,7 @@ app.get( '/', ( req, res ) => {
 
 // Sockets.io communication
 io.on( 'connection' , socket => {
-	io.emit( 'connected' )
-
-    socket.on( 'join-room', room => {
+        socket.on( 'join-room', room => {
         socket.join( room, () => socket.emit( 'room-joined', room ) )
     } )
 
@@ -24,3 +22,7 @@ io.on( 'connection' , socket => {
         io.to( msg.room ).emit( msg.event, msg.data )
 	} )
 } )
+
+setInterval( () => {
+    console.log( `connected sockets: ${ Object.keys( io.sockets.connected ).length }` )
+}, 10000 )

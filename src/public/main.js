@@ -4,6 +4,6 @@ SocketService.init( 'my-awesome-room', socket => {
     socket.on( 'room-joined', room => {
         console.log( `socket joined ${ room }` )
 
-        socket.emit( 'test', { msg: 'hello test' } )
+        socket.emit( 'test', { msg: `hello from ${ window.location }`  } )
     } )
 } )
