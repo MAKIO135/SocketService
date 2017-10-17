@@ -5,7 +5,7 @@ SocketService.init = ( room, callback ) => {
     class Socket {
         constructor( room ) {
             this.room = room
-            this.socket = io()
+            this.socket = io( 'https://socketservice.herokuapp.com/' )
             this.socket.on( 'connected', () => this.socket.emit( 'join-room', this.room ) )
         }
 
