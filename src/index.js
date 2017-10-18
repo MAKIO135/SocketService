@@ -23,7 +23,6 @@ io.on( 'connection' , socket => {
     } )
 
     socket.on( 'msg', msg => {
-        console.log( msg )
         io.to( msg.room ).emit( msg.event, msg.data )
 	} )
 } )
