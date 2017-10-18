@@ -4,20 +4,47 @@
     font-family: 'Roboto', sans-serif;
 }
 
-h1{
-    font-weight: 900;
-    font-style: italic;
-    color: #ff7043;
+body{
+    background: #ff4136;
+    margin: 0;
+    padding: 0;
 }
 
-h6{
-    margin-top: -30px;
-}
+.container{
+    background: #eee;
+    padding: 10px 20px;
 
-.code{
-    background: #dfdfdf;
-    border-radius: 2px;
-    padding: 0 5px;
-    font-size: 15px;
-    font-family: monospace;
+    h1{
+        font-weight: 900;
+        font-style: italic;
+        color: #ff4136;
+    }
+
+    h6{
+        margin-top: -30px;
+    }
+
+    hr{
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    code{
+        font-size: 15px;
+        font-family: monospace;
+    }
+
+    .code{
+        background: #dfdfdf;
+        border-radius: 2px;
+        padding: 0 5px;
+        font-size: 15px;
+        font-family: monospace;
+    }
+
+    footer{
+        p{
+            margin-bottom: 0;
+        }
+    }
 }
