@@ -12,6 +12,7 @@ body{
 
 .container{
     background: #eee;
+    min-height: 100vh;
     padding: 10px 20px;
 
     h1{
@@ -27,6 +28,7 @@ body{
     hr{
         margin-top: 0;
         margin-bottom: 15px;
+        border-top: solid 1px #ff4136;
     }
 
     code{
