@@ -15,6 +15,7 @@ app.get( '/', ( req, res ) => {
 // Sockets.io communication
 io.on( 'connection' , socket => {
     console.log( 'connection: ' + socket.id )
+    soket.emit( 'connected' )
 
     socket.on( 'join-room', room => {
         console.log( 'join-room: ' + room )

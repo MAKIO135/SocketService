@@ -1,6 +1,7 @@
 window.addEventListener( 'load', e => {
     SocketService.init( 'my-awesome-room', socket => {
-        console.log( 'inited' );
+        console.log( socket );
+        socket.emit('join-room', 'my-awesome-room' );
         socket.on( 'my-event', data => console.log( data ) )
 
         socket.on( 'room-joined', room => {
