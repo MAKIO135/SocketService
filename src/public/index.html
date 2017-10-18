@@ -48,7 +48,7 @@
     socket.on( 'room-joined', room => {
         console.log( `socket joined ${ room }` )
 
-        socket.emit( 'my-event', { msg: `hello from ${ window.location }` )
+        socket.emit( 'my-event', { msg: `hello from ${ window.location }` } )
     } )
 } )</code></pre>
 
