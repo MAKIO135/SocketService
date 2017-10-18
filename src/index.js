@@ -14,19 +14,16 @@ app.get( '/', ( req, res ) => {
 
 // Sockets.io communication
 io.on( 'connection' , socket => {
-    console.log( 'connection: ' + socket.id )
     socket.emit( 'connected' )
 
     socket.on( 'join-room', room => {
-        console.log( 'join-room: ' + room )
         socket.join( room, () =>{
-            console.log( 'room-joined: ' + room )
             socket.emit( 'room-joined', room )
         } )
     } )
 
     socket.on( 'msg', msg => {
-        console.log( 'msg' )
+        console.log( msg )
         io.to( msg.room ).emit( msg.event, msg.data )
 	} )
 } )
