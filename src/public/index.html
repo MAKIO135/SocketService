@@ -38,19 +38,21 @@
         - the <span class="code">on</span> method lets you handle your events and how all sockets in the room should use data.
     </p>
 
-<pre><code>SocketService.init( 'my-room', socket => {
-    socket.on( 'my-test', data => console.log( data ) )
+<pre><code>SocketService.init( 'my-awesome-room', socket => {
+    socket.on( 'my-event', data => console.log( data ) )
 
     socket.on( 'room-joined', room => {
         console.log( `socket joined ${ room }` )
 
-        socket.emit( 'my-test', { msg: 'hello test1' } )
+        socket.emit( 'my-event', { msg: 'hello test',  } )
     } )
 } )</code></pre>
 
+    <hr>
+    <p>Socket Service is developped by <a href="http://makio135.com">@Makio135</a></p>
     </div>
 
-    <script src="/SocketService.min.js"></script>
+    <script src="https://socketservice.herokuapp.com/SocketService.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
