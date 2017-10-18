@@ -3,7 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>Socket Service</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
     <link rel="stylesheet" href="style.min.css">
 </head>
 <body>
@@ -13,19 +16,19 @@
 
         <hr>
 
-        <p>SocketService provides a super small library (&lt;1Kb) that lets you connect to our websocket service, join a room for your app and emit your own events to all the sockets in your room.</p>
+        <p>SocketService provides a super small library ( &lt; 0.5Kb ) that lets you connect to our websocket service, join a room for your app and emit your own events to all the sockets in your room.</p>
 
         <hr>
 
-        <h5>HOW TO USE IT</h5>
+        <h5>USAGE</h5>
 
         <p>First, include the SocketService library:</p>
         <pre><code>&lt;script src="https://socketservice.herokuapp.com/SocketService.min.js"&gt;&lt;/script&gt;</code></pre>
 
         <p>
-            The SocketService library exposes a single global object <span class="code">SocketService</span> with a method to initialize it, accepting 2 parameters:<br>
-            - the name of the room you want to join.<br>
-            - a callback function with a socket a parameter.
+            The SocketService library exposes a single global object <span class="code">SocketService</span> with a method to initialize it, requiring 2 parameters:<br>
+            - the name of the room you want to create/join<br>
+            - a callback function with a socket as parameter
         </p>
 
 <pre><code>SocketService.init( 'my-awesome-room', socket => {
@@ -34,7 +37,8 @@
 
     <p>
         The API for the socket is based on socket.io, exposing <span class="code">on</span> and <span class="code">emit</span> methods:<br>
-        - the <span class="code">emit</span> method lets you emit an event with the name your choice and an object for passing data. There is only one event that is fired automatically by the server that lets you know the socket joined the room <span class="code">'room-joined'</span>.<br>
+        - the <span class="code">emit</span> method lets you emit an event with the name of your choice and an object for passing data.<br>
+        &nbsp;&nbsp;Only a <span class="code">'room-joined'</span> event is fired automatically by the server to let you know the socket joined the room.<br>
         - the <span class="code">on</span> method lets you handle your events and how all sockets in the room should use data.
     </p>
 
@@ -44,15 +48,33 @@
     socket.on( 'room-joined', room => {
         console.log( `socket joined ${ room }` )
 
-        socket.emit( 'my-event', { msg: 'hello test',  } )
+        socket.emit( 'my-event', { msg: `hello from ${ window.location }` )
     } )
 } )</code></pre>
 
+<!--
     <hr>
-    <p>Socket Service is developped by <a href="http://makio135.com">@Makio135</a></p>
+
+    <h5>IN ACTION</h5>
+
+    <div class="row">
+        <div class="one-third column">Simple Chat</div>
+        <div class="one-third column">Multiplayer Sequencer</div>
+        <div class="one-third column">Drip Party</div>
+    </div>
+-->
+    <hr>
+
+    <footer>
+        <p>Socket Service is developped by <a href="http://makio135.com">@Makio135</a></p>
+    </footer>
+
     </div>
 
     <script src="https://socketservice.herokuapp.com/SocketService.min.js"></script>
     <script src="main.js"></script>
-</body>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>
 </html>
